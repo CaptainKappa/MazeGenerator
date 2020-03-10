@@ -13,23 +13,7 @@ grid = []
 neighbours = []
 stack = deque()
 
-def getIndex(x, y):
-    index = None
-    if x < 0 or x > COLUMNS - 1 or y < 0 or y > ROWS - 1:
-        index = -1
-        return -1
 
-    index = x + y * COLUMNS
-    return index
-
-
-def getCell(index):
-    cell = None
-
-    if not index == -1:
-        cell = grid[index]
-
-    return cell
 
 
 class Cell:
@@ -101,6 +85,25 @@ class Cell:
         if diffY == 1:
             self.borders[0] = False
             neighbour.borders[2] = False
+
+
+def getIndex(x, y):
+    index = None
+    if x < 0 or x > COLUMNS - 1 or y < 0 or y > ROWS - 1:
+        index = -1
+        return -1
+
+    index = x + y * COLUMNS
+    return index
+
+
+def getCell(index):
+    cell = None
+
+    if not index == -1:
+        cell = grid[index]
+
+    return cell
 
 
 def drawDisplay(win, grid):
