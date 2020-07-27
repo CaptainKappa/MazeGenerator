@@ -3,9 +3,9 @@ import pygame
 from random import randint
 from collections import deque
 
-WINDOW_WIDTH = 801
-WINDOW_HEIGHT = 801
-BLOCK_SIZE = 50
+WINDOW_WIDTH = 401
+WINDOW_HEIGHT = 401
+BLOCK_SIZE = 20
 COLUMNS = math.floor(WINDOW_WIDTH / BLOCK_SIZE)
 ROWS = math.floor(WINDOW_HEIGHT / BLOCK_SIZE)
 
@@ -84,6 +84,7 @@ class Cell:
             self.borders[0] = False
             neighbour.borders[2] = False
 
+# END CLASS CELL
 
 def getIndex(x, y):
     index = None
@@ -127,7 +128,7 @@ def main():
 
     running = True
     while running:
-        clock.tick(40)
+        clock.tick(100)
         # 2nd step
         if len(stack) > 0:
             # 2.1
@@ -149,6 +150,9 @@ def main():
                 # 2.2.4
                 chosenNeighbour.visited = True
                 stack.append(chosenNeighbour)
+        else:
+            # stack == 0 -> all cells visited
+            running = False
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
